@@ -2,6 +2,11 @@ variable "vpc_id" {
   type = string
 }
 
+variable "dms_sg_id" {
+  type        = string
+  description = "Security group ID for the DMS replication instance"
+}
+
 variable "subnet_ids" {
   type = list(string)
 }

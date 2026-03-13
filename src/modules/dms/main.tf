@@ -1,13 +1,3 @@
-resource "aws_security_group" "dms" {
-  vpc_id = var.vpc_id
-  egress {
-    from_port   = 0
-    to_port     = 0
-    protocol    = "-1"
-    cidr_blocks = ["0.0.0.0/0"]
-  }
-}
-
 resource "aws_dms_replication_subnet_group" "default" {
   replication_subnet_group_id          = "dms-demo-subnet-group"
   replication_subnet_group_description = "Demo subnet group"
@@ -20,7 +10,7 @@ resource "aws_dms_replication_instance" "this" {
   allocated_storage           = 20
   multi_az                    = false
   publicly_accessible         = true
-  vpc_security_group_ids      = [aws_security_group.dms.id]
+  vpc_security_group_ids      = [var.dms_sg_id]
   replication_subnet_group_id = aws_dms_replication_subnet_group.default.id
 }
 
@@ -53,7 +43,7 @@ resource "aws_dms_s3_endpoint" "target" {
 
   cdc_min_file_size      = 64000
   cdc_max_batch_interval = 3600
-  preserve_transactions  = true
+  preserve_transactions  = false
   add_column_name        = true
 }
 

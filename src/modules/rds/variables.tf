@@ -10,7 +10,7 @@ variable "subnet_ids" {
 
 variable "dms_sg_id" {
   type        = string
-  description = "Security group ID of the DMS replication instance"
+  description = "Security group ID that should be allowed to connect to RDS (DMS)"
 }
 
 variable "rds_username" {
