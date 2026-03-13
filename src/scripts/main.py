@@ -7,9 +7,9 @@ from datetime import datetime
 from mysql.connector import Error
 
 DB_CONFIG = {
-    'host': '52.72.4.132', # Use your RDS Public IP or Endpoint
+    'host': 'your-ip-or-endpoint', # Use your RDS Public IP or Endpoint
     'user': 'admin',
-    'password': 'root123$',
+    'password': 'your-password',
     'database': 'demodb'
 }
 
