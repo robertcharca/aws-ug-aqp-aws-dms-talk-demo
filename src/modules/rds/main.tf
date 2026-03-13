@@ -25,6 +25,20 @@ resource "aws_security_group" "rds" {
     protocol        = "tcp"
     security_groups = [var.dms_sg_id]
   }
+
+  ingress {
+    from_port   = 3306
+    to_port     = 3306
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  egress {
+    from_port   = 0
+    to_port     = 0
+    protocol    = "-1"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
 }
 
 resource "aws_db_instance" "source" {
@@ -33,6 +47,7 @@ resource "aws_db_instance" "source" {
   allocated_storage       = 20
   engine                  = "mysql"
   engine_version          = "8.0"
+  availability_zone       = "us-east-1a"
   username                = var.rds_username
   password                = var.rds_password
   db_name                 = var.rds_db_name

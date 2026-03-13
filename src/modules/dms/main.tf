@@ -41,8 +41,8 @@ resource "aws_dms_s3_endpoint" "target" {
   parquet_timestamp_in_millisecond = true
   compression_type                 = "GZIP"
 
-  cdc_min_file_size      = 64000
-  cdc_max_batch_interval = 3600
+  cdc_min_file_size      = 2000
+  cdc_max_batch_interval = 10
   preserve_transactions  = false
   add_column_name        = true
 }

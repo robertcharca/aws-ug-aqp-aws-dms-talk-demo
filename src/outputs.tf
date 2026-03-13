@@ -13,3 +13,7 @@ output "glue_database" {
 output "dms_task_arn" {
   value = module.dms.dms_task_arn
 }
+
+output "athena_results_bucket" {
+  value = module.s3.athena_results_bucket
+}

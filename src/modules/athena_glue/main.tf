@@ -11,3 +11,18 @@ resource "aws_glue_crawler" "demo" {
     path = "s3://${var.s3_bucket_id}/cdc-lake/"
   }
 }
+
+resource "aws_athena_workgroup" "demo" {
+  name = "dms-cdc-demo"
+
+  configuration {
+    result_configuration {
+      output_location = "s3://${var.athena_results_bucket}/"
+    }
+
+    enforce_workgroup_configuration    = true
+    publish_cloudwatch_metrics_enabled = true
+  }
+
+  state = "ENABLED"
+}

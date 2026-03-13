@@ -19,6 +19,7 @@ locals {
 }
 
 data "aws_vpc" "default" {}
+
 data "aws_subnets" "default" {
   filter {
     name   = "vpc-id"
@@ -96,7 +97,8 @@ module "dms" {
 }
 
 module "athena_glue" {
-  source        = "./modules/athena_glue"
-  glue_role_arn = module.iam.glue_role_arn
-  s3_bucket_id  = module.s3.bucket_id
+  source                = "./modules/athena_glue"
+  glue_role_arn         = module.iam.glue_role_arn
+  s3_bucket_id          = module.s3.bucket_id
+  athena_results_bucket = module.s3.athena_results_bucket
 }
