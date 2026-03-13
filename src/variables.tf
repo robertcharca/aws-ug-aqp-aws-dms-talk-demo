@@ -15,5 +15,5 @@ variable "rds_db_name" {
 }
 
 variable "table_name" {
-  default = "customers"
+  default = "customers_transactions"
 }
