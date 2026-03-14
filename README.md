@@ -2,6 +2,8 @@
 
 Este proyecto demuestra cómo implementar una arquitectura de Change Data Capture (CDC) para replicar datos desde un Amazon RDS (MySQL) hacia un Data Lake en Amazon S3, utilizando AWS DMS. El objetivo es liberar al desarrollador de la carga de programar lógica de auditoría y permitir analíticas en tiempo real.
 
+> **IMPORTANTE:** Los procesos aplicados no contienen todas las medidas de seguridad necesarias con el fin de validar rápidamente la integración. Si desea aplicar esto en un entorno de producción, es mejor verificar las mejores prácticas y estándares de seguridad de datos y conexiones en AWS.
+
 ## Arquitectura
 ![Arquitectura de la demo de DMS](assets/demo-architecture.png)
 
@@ -96,3 +98,6 @@ SELECT * FROM "dms_cdc_demo"."cdc_lake" LIMIT 1000;
 
 ## Menciones
 - Hossain, Y. (2024). Customer Transactions Dataset. Kaggle. https://www.kaggle.com/datasets/yaminh/customer-transactions-dataset?select=customer_data.csv
+
+<hr/>
+<p align="center">Hecho con 💙 por Robert Charca.</p>
